@@ -84,7 +84,6 @@ const handleDelete = (id) => {
       onChange={(e) => setFilterType(e.target.value)}
       className="bg-transparent text-sm outline-none text-gray-700 dark:text-gray-200 cursor-pointer"
     >
-      {/* FIX: Added bg-white dark:bg-gray-800 to options */}
       <option className="bg-white dark:bg-gray-800" value="All">All Types</option>
       <option className="bg-white dark:bg-gray-800" value="Income">Income Only</option>
       <option className="bg-white dark:bg-gray-800" value="Expense">Expense Only</option>
@@ -123,6 +122,7 @@ const handleDelete = (id) => {
                 <th className="p-4 font-semibold text-sm">Profile</th>
                 <th className="p-4 font-semibold text-sm">Category</th>
                 <th className="p-4 font-semibold text-sm">Type</th>
+                <th className="p-4 font-semibold text-sm">Note</th> 
                 <th className="p-4 font-semibold text-sm cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition" onClick={() => requestSort('amount')}>
                   Amount {sortConfig.key === 'amount' && (sortConfig.direction === 'asc' ? '↑' : '↓')}
                 </th>
@@ -152,6 +152,9 @@ const handleDelete = (id) => {
                       <span className={`px-2 py-1 rounded text-xs font-medium ${t.type === 'Income' ? 'bg-green-100 text-green-800 dark:bg-green-900/40 dark:text-green-300' : 'bg-red-100 text-red-800 dark:bg-red-900/40 dark:text-red-300'}`}>
                         {t.type}
                       </span>
+                    </td>
+                    <td className="p-4 text-sm text-gray-500 dark:text-gray-400 max-w-[120px] truncate" title={t.note}>
+                      {t.note || <span className="text-gray-300 dark:text-gray-600">-</span>}
                     </td>
                     <td className="p-4 font-bold text-sm whitespace-nowrap">
                       {t.txCurrency && t.txCurrency !== currency ? CURRENCY_SYMBOLS[t.txCurrency] : sym}

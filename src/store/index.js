@@ -13,6 +13,7 @@ store.subscribe(() => {
   localStorage.setItem('financeState', JSON.stringify({
     transactions: state.transactions,
     role: state.role,
-    theme: state.theme
+    theme: state.theme,
+    currency: state.currency
   }));
 });
